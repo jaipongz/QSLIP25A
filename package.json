@@ -1,0 +1,40 @@
+{
+  "name": "qslip-api",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+    "build": "npm run clean && tsc && npm run copy-files",
+    "start": "node dist/app.js",
+    "clean": "rm -rf dist/",
+    "copy-files": "cp -n .env dist/ || true && cp -r src/views dist/ || true && cp -n swagger_output.json dist/ || true",
+    "deploy": "chmod +x scripts/deploy.sh && ./scripts/deploy.sh",
+    "pm2:start": "pm2 start ecosystem.config.js",
+    "pm2:restart": "pm2 restart qslip-api",
+    "pm2:stop": "pm2 stop qslip-api",
+    "swagger": "ts-node src/utils/swaggerAutogen.ts",
+    "dev:swagger": "npm run swagger && npm run dev"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.4",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.0",
+    "@types/express-validator": "^2.20.33",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^20.19.13",
+    "@types/swagger-ui-express": "^4.1.8",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.0"
+  }
+}
