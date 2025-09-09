@@ -29,13 +29,14 @@ fi
 echo "🔄 Managing application process..."
 if command -v pm2 &> /dev/null; then
     if pm2 list | grep -q "qslip-api"; then
-        echo "🔄 Restarting existing application..."
-        pm2 restart qslip-api
-    else
-        echo "🚀 Starting new application..."
-        pm2 start dist/app.js --name "qslip-api"
+        echo "🔄 Stopping existing application..."
+        pm2 delete qslip-api || true
     fi
+
+    echo "🚀 Starting application..."
+    pm2 start dist/app.js --name "qslip-api"
     pm2 save
+
 else
     echo "⚠️ PM2 not found, starting directly..."
     node dist/app.js &
