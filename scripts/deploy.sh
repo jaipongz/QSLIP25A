@@ -12,7 +12,7 @@ git pull origin main
 
 # 2. Install dependencies
 echo "🔧 Installing dependencies..."
-npm install --production
+npm install
 
 # 3. Build project
 echo "🔨 Building project..."
@@ -40,6 +40,7 @@ else
     echo "⚠️ PM2 not found, starting directly..."
     node dist/app.js &
 fi
+npm prune --production
 
 echo "✅ Deployment completed successfully!"
 echo "📊 Check application status with: pm2 status"
