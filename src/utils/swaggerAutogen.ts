@@ -14,7 +14,7 @@ const doc = {
     securityDefinitions: {
         bearerAuth: {
             type: "apiKey",
-            name: "Authorization",
+            name: "Quick slip api",
             in: "header",
             description: "Enter 'Bearer' [space] and then your token."
         }

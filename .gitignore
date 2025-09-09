@@ -3,4 +3,5 @@ dist/
 .env
 logs/
 .DS_Store
+swagger_output.json
 *.log

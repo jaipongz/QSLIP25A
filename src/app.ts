@@ -16,13 +16,29 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];
+const corsOptions = {
+    origin: (origin: any, callback: any) => {
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+};
+app.use(cors(corsOptions));
+
+
 app.get('/', (req, res) => {
     res.json({
         message: 'Welcome to qslip-api',
         documentation: '/api-docs'
     });
 });
-app.use('/auth', authRoutes);
+app.use(authRoutes);
 if (process.env.NODE_ENV !== 'production') {
     setupSwagger(app);
 }
