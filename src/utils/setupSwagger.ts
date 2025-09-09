@@ -5,7 +5,7 @@ import path from 'path';
 
 export const setupSwagger = (app: express.Application): void => {
   try {
-    const swaggerFilePath = path.join(__dirname, '../../swagger_output.json');
+    const swaggerFilePath = path.resolve(__dirname, '../../swagger_output.json');
     
     if (fs.existsSync(swaggerFilePath)) {
       const swaggerDocument = require(swaggerFilePath);
