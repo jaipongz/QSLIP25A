@@ -2,7 +2,7 @@
 set -e
 
 echo "🚀 Starting qslip-api deployment..."
-cd /home/$(whoami)/qslip-api
+cd /home/$(whoami)/public_html/website/QSLIP25A
 
 # 1. Git operations
 echo "📦 Updating code from git..."
