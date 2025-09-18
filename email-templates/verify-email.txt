@@ -1,0 +1,16 @@
+Verify Your Email Address
+
+Hello {{firstName}},
+
+Thank you for signing up for {{appName}}! Please use the link below to verify your email address:
+
+{{verificationLink}}
+
+This verification link will expire in {{expiryHours}} hours.
+
+If you didn't create an account with us, please ignore this email.
+
+Best regards,
+The {{appName}} Team
+
+Having trouble? Contact our support team at {{supportEmail}}

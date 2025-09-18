@@ -5,3 +5,4 @@ logs/
 .DS_Store
 swagger_output.json
 *.log
+package-lock.json
