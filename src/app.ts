@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import { DB } from './utils/database';
 import authRoutes from './routes/authRoutes';
 import { setupSwagger } from './utils/setupSwagger';
+import { log } from 'console';
 
 dotenv.config();
 
@@ -19,6 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];
 const corsOptions = {
     origin: (origin: any, callback: any) => {
+        console.log(origin,'has called');
+        
         if (allowedOrigins.includes(origin) || !origin) {
             callback(null, true);
         } else {

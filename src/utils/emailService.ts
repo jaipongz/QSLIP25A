@@ -115,7 +115,7 @@ export class EmailService {
 
   // Specific email methods
   async sendVerificationEmail(email: string, token: string, firstName: string): Promise<void> {
-    const verificationLink = `${process.env.FRONTEND_URL}/verify-email?token=${token}`;
+    const verificationLink = `${process.env.FRONTEND_URL}/email-verify?token=${token}`;
 
     await this.send({
       to: email,
